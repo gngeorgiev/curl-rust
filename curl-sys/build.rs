@@ -212,7 +212,11 @@ fn main() {
             .file("curl/lib/vauth/vauth.c");
     }
 
-    if cfg!(target_family = "unix") {
+    if cfg!(any(
+        target_os = "macos",
+        target_os = "linux",
+        target_os = "freebsd",
+    )) {
         cfg.define("USE_UNIX_SOCKETS", None)
             .define("HAVE_SYS_UN_H", None);
     }
