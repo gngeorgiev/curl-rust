@@ -212,7 +212,7 @@ fn main() {
             .file("curl/lib/vauth/vauth.c");
     }
 
-    if cfg!(not(windows)) {
+    if !windows {
         cfg.define("USE_UNIX_SOCKETS", None)
             .define("HAVE_SYS_UN_H", None);
     }
